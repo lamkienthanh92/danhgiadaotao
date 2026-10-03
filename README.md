@@ -97,6 +97,10 @@ src/
 tests/logic.test.ts  kiểm thử phần tính toán
 ```
 
+## Logo
+
+Logo bệnh viện nằm trong `src/assets/` (`logo.png` đầy đủ, `logo-icon.png` chỉ biểu tượng) và `public/favicon.png`. Muốn đổi logo, thay các file này giữ nguyên tên.
+
 ## Ghi chú
 
 - Thư viện đọc Excel là `xlsx` (SheetJS) bản 0.18.5 trên npm. Ứng dụng chỉ đọc file do chính người dùng chọn trên máy họ.

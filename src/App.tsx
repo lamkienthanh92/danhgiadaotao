@@ -9,6 +9,8 @@ import { StaffView } from "./views/StaffView";
 import { CompareView } from "./views/CompareView";
 import { DataView } from "./views/DataView";
 import { METRICS } from "./lib/metrics";
+import logo from "./assets/logo.png";
+import logoIcon from "./assets/logo-icon.png";
 
 const NAV = [
   { key: "overview", label: "Tổng quan", icon: "◈" },
@@ -59,11 +61,21 @@ export default function App() {
       {showUpload && <UploadModal onClose={() => setShowUpload(false)} onLoad={handleLoad} />}
 
       <div style={{ background: T.navy, height: mob ? 52 : 56, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, padding: mob ? "0 12px" : "0 24px", position: "sticky", top: 0, zIndex: 100, boxShadow: "0 2px 16px rgba(0,0,0,0.25)" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: mob ? 10 : 14, minWidth: 0 }}>
-          <div style={{ width: 34, height: 34, borderRadius: 8, flexShrink: 0, background: "linear-gradient(135deg,#3B82F6,#10B981)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, color: "#fff" }}>✦</div>
+        <div style={{ display: "flex", alignItems: "center", gap: mob ? 10 : 16, minWidth: 0 }}>
+          {mob ? (
+            <div style={{ width: 36, height: 36, borderRadius: 10, flexShrink: 0, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <img src={logoIcon} alt="Logo bệnh viện" style={{ width: 26, height: 26, objectFit: "contain" }} />
+            </div>
+          ) : (
+            <div style={{ background: "#fff", borderRadius: 10, padding: "5px 12px", flexShrink: 0, display: "flex", alignItems: "center" }}>
+              <img src={logo} alt="Bệnh viện Đa khoa Lãnh Binh Thăng" style={{ height: 34, display: "block" }} />
+            </div>
+          )}
           <div style={{ minWidth: 0 }}>
-            <div style={{ color: T.white, fontWeight: 800, fontSize: mob ? 13 : 14, letterSpacing: "-0.3px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>Bệnh viện Đa khoa Lãnh Binh Thăng</div>
-            <div style={{ color: "#64A5FF", fontSize: 11, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            {mob && (
+              <div style={{ color: T.white, fontWeight: 800, fontSize: 13, letterSpacing: "-0.3px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>BV Đa khoa Lãnh Binh Thăng</div>
+            )}
+            <div style={{ color: mob ? "#64A5FF" : "#CFE3FF", fontSize: mob ? 11 : 14, fontWeight: mob ? 400 : 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
               {mob ? "Đánh giá BS khối ngoại sau đào tạo" : "Đánh giá bác sĩ khối ngoại sau đào tạo chuyên môn"}
             </div>
           </div>
@@ -122,7 +134,7 @@ export default function App() {
 
         {!staff && view !== "data" ? (
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 400, gap: 18, textAlign: "center" }}>
-            <div style={{ fontSize: 64 }}>📊</div>
+            <img src={logo} alt="Bệnh viện Đa khoa Lãnh Binh Thăng" style={{ width: "min(420px, 80vw)", height: "auto" }} />
             <div style={{ fontSize: 22, fontWeight: 800, color: T.navy }}>Chưa có dữ liệu</div>
             <div style={{ fontSize: 15, color: T.muted, maxWidth: 480 }}>
               Tải lên file Excel theo bộ 9 tiêu chí để bắt đầu đánh giá hiệu quả đào tạo chuyên môn của bác sĩ khối ngoại.
